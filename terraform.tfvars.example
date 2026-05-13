@@ -1,4 +1,4 @@
-github_owner = "cmichels"
+github_owner = "cmichels-engineering"
 
 repo_tiers = {
   pr-monitor    = "public_tooling"

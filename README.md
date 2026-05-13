@@ -47,7 +47,7 @@ make init
 3. Import existing repositories into state:
 
 ```bash
-./scripts/import-existing.sh cmichels
+./scripts/import-existing.sh cmichels-engineering
 ```
 
 4. Validate and plan:

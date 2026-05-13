@@ -1,0 +1,27 @@
+github_owner = "cmichels"
+
+repo_tiers = {
+  pr-monitor    = "public_tooling"
+  claude-config = "public_tooling"
+  dotconfig     = "public_tooling"
+}
+
+repo_metadata = {
+  pr-monitor = {
+    description = "Terminal-native GitHub PR monitoring TUI with review workflows, local repo discovery, and optional Jira context."
+    topics      = ["go", "terminal-ui", "developer-tooling", "github-api", "productivity-tools", "bubbletea", "graphql"]
+    visibility  = "public"
+  }
+
+  claude-config = {
+    description = "Portable Claude Code environment — settings, commands, agents, hooks, and project memory"
+    topics      = ["developer-tooling", "ai-workflows", "terminal", "automation", "configuration"]
+    visibility  = "public"
+  }
+
+  dotconfig = {
+    description = "Portable .config foundation for keyboard-first engineering workflow across machines"
+    topics      = ["dotfiles", "zsh", "tmux", "neovim", "wezterm", "developer-productivity"]
+    visibility  = "public"
+  }
+}

@@ -1,4 +1,11 @@
 locals {
+  org_ruleset = {
+    name                   = "Org Public Repos Baseline"
+    target                 = "branch"
+    enforcement            = "active"
+    required_status_checks = ["validate"]
+  }
+
   policy_tiers = {
     public_tooling = {
       has_issues             = true

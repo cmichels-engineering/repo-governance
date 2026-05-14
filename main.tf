@@ -53,3 +53,46 @@ resource "github_branch_protection" "dev" {
   allows_deletions                = each.value.policy.allow_deletions
   require_conversation_resolution = each.value.policy.required_conversation_resolution
 }
+
+resource "github_organization_ruleset" "public_repos_baseline" {
+  name        = local.org_ruleset.name
+  target      = local.org_ruleset.target
+  enforcement = local.org_ruleset.enforcement
+
+  bypass_actors {
+    actor_type  = "OrganizationAdmin"
+    bypass_mode = "always"
+  }
+
+  conditions {
+    ref_name {
+      include = ["~DEFAULT_BRANCH"]
+      exclude = []
+    }
+
+    repository_name {
+      include = var.org_ruleset_repositories
+      exclude = []
+    }
+  }
+
+  rules {
+    deletion         = true
+    non_fast_forward = true
+
+    pull_request {
+      dismiss_stale_reviews_on_push     = true
+      require_code_owner_review         = true
+      require_last_push_approval        = false
+      required_approving_review_count   = 1
+      required_review_thread_resolution = true
+    }
+
+    required_status_checks {
+      strict_required_status_checks_policy = true
+      required_check {
+        context = "validate"
+      }
+    }
+  }
+}

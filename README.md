@@ -8,6 +8,7 @@ Terraform-managed baseline governance for personal/public engineering repositori
 - Visibility and metadata (description/topics)
 - Vulnerability alerts
 - Branch protection on `dev` for policy tiers
+- Organization-level branch ruleset for public repositories
 
 Current tier in use:
 
@@ -50,6 +51,12 @@ make init
 ./scripts/import-existing.sh cmichels-engineering
 ```
 
+Import org ruleset (if already created manually):
+
+```bash
+terraform import github_organization_ruleset.public_repos_baseline 16342302
+```
+
 4. Validate and plan:
 
 ```bash
@@ -72,3 +79,4 @@ Per-repo metadata is defined in `repo_metadata`.
 
 - `prevent_destroy` is enabled for managed repositories.
 - Secret scanning and push protection are currently enforced outside Terraform and should remain part of operational checks until brought into provider-managed resources.
+- Organization ruleset bypass is configured for `OrganizationAdmin` because user-level bypass actors are not supported for org rulesets.

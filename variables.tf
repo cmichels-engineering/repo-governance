@@ -24,3 +24,9 @@ variable "repo_metadata" {
     visibility  = optional(string, "public")
   }))
 }
+
+variable "org_ruleset_repositories" {
+  description = "Repositories included in the organization baseline ruleset"
+  type        = list(string)
+  default     = ["pr-monitor", "claude-config", "dotconfig", "repo-governance"]
+}
